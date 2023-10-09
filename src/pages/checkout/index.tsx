@@ -12,6 +12,7 @@ import {
   StyledTapeQuantity,
   StyledFinishButton,
   StyledMoviePoster,
+  StyledCtaSection,
 } from './styles';
 
 const Checkout = () => {
@@ -36,6 +37,11 @@ const Checkout = () => {
       navigate('/');
     }, 2000);
   };
+
+  const handleAddMoreItems = () => {
+    navigate('/');
+  };
+
 
   return (
     <StyledCheckoutWrapper>
@@ -66,9 +72,15 @@ const Checkout = () => {
                   </StyledMovieDetails>
                 </StyledMovieCard>
               ))}
-              <StyledFinishButton onClick={handleFinishPurchase}>
-                Finish Purchase
-              </StyledFinishButton>
+              <StyledCtaSection>
+                <StyledFinishButton onClick={handleAddMoreItems}>
+                  Add More Items
+                </StyledFinishButton>
+                <StyledFinishButton onClick={handleFinishPurchase}>
+                  Finish Purchase
+                </StyledFinishButton>
+              </StyledCtaSection>
+
             </>
           )}
         </>

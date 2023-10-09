@@ -124,7 +124,6 @@ export const StyledFinishButton = styled.button`
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
   font-size: 18px;
-  margin: 20px auto;
   outline: none;
 
   &:hover {
@@ -150,5 +149,16 @@ export const StyledMoviePoster = styled.img`
   @media (max-width: 768px) {
     min-height: 100px;
     max-height: 100px;
+  }
+`;
+
+export const StyledCtaSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  margin: 20px auto;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
   }
 `;

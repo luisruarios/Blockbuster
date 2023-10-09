@@ -57,6 +57,12 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
     padding: 0 20px;
   }
+
+  main {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 interface LayoutProps {
