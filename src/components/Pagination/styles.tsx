@@ -2,12 +2,17 @@ import styled from "styled-components";
 
 export const StyledPagination = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 8% 0;
+  margin: 8% 0 4%;
   backdrop-filter: blur(5px);
   padding: 10px;
   border-radius: 10px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 
   button {
     background-color: #860a04;

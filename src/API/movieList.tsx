@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const fetchMovieList = async (currentPage: number) => {
   try {
-    const response = await axios.get(`https://www.omdbapi.com/?s=future&apikey=5eec5adc&page=${currentPage}`);
+    const response = await axios.get(`https://www.omdbapi.com/?s=avengers&apikey=5eec5adc&page=${currentPage}`);
 
     // Check if the response's Response property is "False"
     if (response.data.Response === "False") {

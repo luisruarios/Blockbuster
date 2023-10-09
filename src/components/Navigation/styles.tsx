@@ -20,13 +20,17 @@ export const StyledLogo = styled.div`
   }
 
   @media (max-width: 768px) {
-    margin-bottom: 1rem;
+    margin: 0 auto;
+    img {
+      max-width: 200px;
+    }
   }
 `;
 
 export const StyledNavList = styled.ul`
   list-style: none;
   display: flex;
+  align-items: center;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -61,5 +65,25 @@ export const StyledNavItem = styled.li`
     a {
       font-size: 18px;
     }
+  }
+`;
+
+export const StyledCartButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all .3s ease;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+  &:hover {
+    transform: scale(1.3);
   }
 `;
