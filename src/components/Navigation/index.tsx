@@ -1,18 +1,20 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'; // You may need to install react-router-dom if not already done
+import { NavLink } from 'react-router-dom';
 import {
   StyledNavigation,
   StyledLogo,
   StyledNavList,
   StyledNavItem,
-} from './styles'; // Import styled components
+  StyledCartButton,
+} from './styles';
 
 const Navigation = () => {
   return (
     <StyledNavigation>
       <StyledLogo>
-        {/* Add your logo image here */}
-        <img src="/logo.png" alt="Logo" />
+        <NavLink to="/">
+          <img src="/logo.png" alt="Blockbuster" />
+        </NavLink>
       </StyledLogo>
       <StyledNavList>
         <StyledNavItem>
@@ -21,13 +23,10 @@ const Navigation = () => {
           </NavLink>
         </StyledNavItem>
         <StyledNavItem>
-          <NavLink to="/about">
-            About
-          </NavLink>
-        </StyledNavItem>
-        <StyledNavItem>
-          <NavLink to="/contact">
-            Contact
+          <NavLink to="/checkout">
+            <StyledCartButton>
+              <img src="/shop-icon.gif" alt="Cart" />
+            </StyledCartButton>
           </NavLink>
         </StyledNavItem>
       </StyledNavList>

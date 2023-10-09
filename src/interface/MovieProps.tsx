@@ -1,4 +1,4 @@
-interface Movie {
+export interface Movie {
     imdbID: string;
     Title: string;
     Year: string;
@@ -6,6 +6,6 @@ interface Movie {
     Poster: string;
 }
 
-export interface CardProps {
+export interface MovieProps {
     movie: Movie;
 }
