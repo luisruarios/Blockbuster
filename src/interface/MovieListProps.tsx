@@ -1,4 +1,4 @@
-interface Movie {
+export interface Movie {
     imdbID: string;
     Title: string;
     Year: string;
@@ -8,4 +8,5 @@ interface Movie {
 
 export interface MovieListProps {
     movies: Movie[];
-}
+    onCardClick: (movie: Movie) => void;
+  }

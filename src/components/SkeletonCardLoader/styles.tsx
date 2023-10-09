@@ -19,6 +19,6 @@ export const StyledSkeletonLoader = styled.div`
   background: linear-gradient(90deg, #4d4d4d9c 25%, #494949b3 50%, #514f4f94 75%);
   background-size: 200px 100%;
   animation: ${loadingAnimation} 1.5s infinite;
-  border-radius: 10px;
-  height: 300px;
+  border-radius: 20px;
+  height: 482px;
 `;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
 export const StyledHomepageWrapper = styled.div`
-    margin: 8% 0;
+    margin: 4% 0;
 `;
