@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import MovieList from '../../components/MovieList/index';
 import Pagination from '../../components/Pagination/index';
 import { StyledHomepageWrapper } from './styles';
@@ -32,7 +32,7 @@ const Home = () => {
   useEffect(() => {
     // Fetch data for the initial page (currentPage is 1)
     fetchMovies(currentPage);
-  }, []);
+  }, [currentPage]);
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);

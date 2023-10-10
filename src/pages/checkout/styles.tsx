@@ -58,9 +58,20 @@ export const StyledMovieImage = styled.div`
 export const StyledMovieDetails = styled.div`
   flex: 1;
   margin-left: 10px;
+  margin-bottom: 10px;
+
+  label {
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-style: italic;
+  }
 
   @media (max-width: 768px) {
     margin: 0 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -71,7 +82,6 @@ export const StyledMovieTitle = styled.h3`
   @media (max-width: 768px) {
     font-size: 18px;
     margin-top: 0;
-    text-align: center;
   }
 `;
 
@@ -81,7 +91,6 @@ export const StyledMovieYear = styled.p`
 
   @media (max-width: 768px) {
     font-size: 14px;
-    text-align: center;
   }
 `;
 
@@ -91,7 +100,6 @@ export const StyledMovieType = styled.p`
 
   @media (max-width: 768px) {
     font-size: 14px;
-    text-align: center;
   }
 `;
 
@@ -101,7 +109,6 @@ export const StyledRentDate = styled.p`
 
   @media (max-width: 768px) {
     font-size: 14px;
-    text-align: center;
   }
 `;
 
@@ -111,7 +118,6 @@ export const StyledTapeQuantity = styled.p`
 
   @media (max-width: 768px) {
     font-size: 14px;
-    text-align: center;
   }
 `;
 
