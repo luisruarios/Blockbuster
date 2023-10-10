@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
 
 export const StyledModalWrapper = styled.div`
@@ -158,3 +158,7 @@ export const StyledInput = styled.input`
   }
 `;
 
+export const StyledWrapInputs = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

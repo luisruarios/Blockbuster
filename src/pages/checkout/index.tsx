@@ -30,7 +30,6 @@ const Checkout = () => {
   const handleFinishPurchase = () => {
     localStorage.removeItem('cart');
     localStorage.removeItem('selectedMovie');
-
     setPurchaseSuccess(true);
 
     setTimeout(() => {
@@ -42,6 +41,26 @@ const Checkout = () => {
     navigate('/');
   };
 
+  const renderMovieCard = (movie: any, index: number) => (
+    <StyledMovieCard key={index}>
+      <StyledMovieImage>
+        <StyledMoviePoster
+          src={movie.Poster === 'N/A' ? '/placeholder.png' : movie.Poster}
+          alt={movie.Title}
+        />
+      </StyledMovieImage>
+      <StyledMovieDetails>
+        <StyledMovieTitle>{movie.Title}</StyledMovieTitle>
+        <label>Selected: {movie.OptionSelected}</label>
+        <StyledMovieYear>Year: {movie.Year}</StyledMovieYear>
+        <StyledMovieType>Type: {movie.Type}</StyledMovieType>
+        {movie.OptionSelected === 'rent' && (
+          <StyledRentDate>Rent Date: {movie.RentDate}</StyledRentDate>
+        )}
+        <StyledTapeQuantity>Tape Quantity: {movie.TapeQuantity}</StyledTapeQuantity>
+      </StyledMovieDetails>
+    </StyledMovieCard>
+  );
 
   return (
     <StyledCheckoutWrapper>
@@ -53,25 +72,7 @@ const Checkout = () => {
             <p className='default'>Please add items to your cart</p>
           ) : (
             <>
-              {cart.map((movie, index) => (
-                <StyledMovieCard key={index}>
-                  <StyledMovieImage>
-                    <StyledMoviePoster
-                      src={movie.Poster === 'N/A' ? '/placeholder.png' : movie.Poster}
-                      alt={movie.Title}
-                    />
-                  </StyledMovieImage>
-                  <StyledMovieDetails>
-                    <StyledMovieTitle>{movie.Title}</StyledMovieTitle>
-                    <StyledMovieYear>Year: {movie.Year}</StyledMovieYear>
-                    <StyledMovieType>Type: {movie.Type}</StyledMovieType>
-                    {movie.OptionSelected === 'rent' && (
-                      <StyledRentDate>Rent Date: {movie.RentDate}</StyledRentDate>
-                    )}
-                    <StyledTapeQuantity>Tape Quantity: {movie.TapeQuantity}</StyledTapeQuantity>
-                  </StyledMovieDetails>
-                </StyledMovieCard>
-              ))}
+              {cart.map((movie, index) => renderMovieCard(movie, index))}
               <StyledCtaSection>
                 <StyledFinishButton onClick={handleAddMoreItems}>
                   Add More Items
@@ -80,7 +81,6 @@ const Checkout = () => {
                   Finish Purchase
                 </StyledFinishButton>
               </StyledCtaSection>
-
             </>
           )}
         </>
