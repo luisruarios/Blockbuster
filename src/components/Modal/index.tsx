@@ -13,6 +13,7 @@ import {
   StyledMoviePoster,
   StyledModalFooter,
   StyledInput,
+  StyledWrapInputs,
 } from './styles';
 
 interface ModalProps {
@@ -22,7 +23,7 @@ interface ModalProps {
 
 const Modal = ({ movie, closeModal }: ModalProps) => {
   const [choice, setChoice] = useState('');
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
 
@@ -34,35 +35,13 @@ const Modal = ({ movie, closeModal }: ModalProps) => {
     setDate(event.target.value);
   };
 
-  const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = parseInt(event.target.value, 10);
-
-    // Check if newValue is a positive integer
-    if (!isNaN(newValue) && newValue > 0) {
-      setQuantity(newValue);
-    } else {
-      // Display an error message for invalid input
-      alert('Quantity must be greater than 1.');
-    }
-  };
-
   const isButtonEnabled = choice === 'rent' || choice === 'purchase';
 
   const handleProceedToCart = () => {
     if (isButtonEnabled) {
-      if (choice === 'rent') {
-        const currentDate = new Date();
-        const selectedDate = new Date(date);
-        if (selectedDate <= currentDate) {
-          // Display an error message for past or current date
-          alert('Please select a future date for rent.');
-          return;
-        }
-      }
-
       // Check if quantity is greater than zero
-      if (quantity <= 0) {
-        // Display an error message for zero or negative quantity
+      if (quantity <= 0 || isNaN(quantity)) {
+        // Display an error message for zero, negative or null
         alert('Quantity must be greater than 1.');
         return;
       }
@@ -107,7 +86,7 @@ const Modal = ({ movie, closeModal }: ModalProps) => {
           <StyledMovieYear>Year: {movie?.Year}</StyledMovieYear>
           <StyledMovieType>Type: {movie?.Type}</StyledMovieType>
         </StyledMovieDetails>
-        <div>
+        <StyledWrapInputs>
           <p className='choose-option'>Choose an option:</p>
           <label>
             <input
@@ -129,21 +108,23 @@ const Modal = ({ movie, closeModal }: ModalProps) => {
             />{' '}
             Purchase
           </label>
-        </div>
+        </StyledWrapInputs>
         {choice === 'rent' && (
           <div>
             <p>Select rent date and tape quantity:</p>
             <StyledInput
               type="date"
               value={date}
+              min={new Date().toISOString().split('T')[0]}
               onChange={handleDateChange}
               placeholder="Select date"
             />
             <StyledInput
               type="number"
               value={quantity}
-              onChange={handleQuantityChange}
               placeholder="Quantity"
+              min="1"
+              onChange={(event) => setQuantity(parseInt(event.target.value))}
             />
           </div>
         )}
@@ -153,8 +134,9 @@ const Modal = ({ movie, closeModal }: ModalProps) => {
             <StyledInput
               type="number"
               value={quantity}
-              onChange={handleQuantityChange}
               placeholder="Quantity"
+              min="1"
+              onChange={(event) => setQuantity(parseInt(event.target.value))}
             />
           </div>
         )}

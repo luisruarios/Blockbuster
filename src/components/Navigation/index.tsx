@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
   StyledNavigation,
@@ -6,9 +6,17 @@ import {
   StyledNavList,
   StyledNavItem,
   StyledCartButton,
+  StyledHamburger,
+  StyledMobileMenu,
 } from './styles';
 
 const Navigation = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <StyledNavigation>
       <StyledLogo>
@@ -16,11 +24,14 @@ const Navigation = () => {
           <img src="/logo.png" alt="Blockbuster" />
         </NavLink>
       </StyledLogo>
+      <StyledHamburger onClick={toggleMenu}>
+        <div></div>
+        <div></div>
+        <div></div>
+      </StyledHamburger>
       <StyledNavList>
         <StyledNavItem>
-          <NavLink to="/">
-            Home
-          </NavLink>
+          <NavLink to="/">Home</NavLink>
         </StyledNavItem>
         <StyledNavItem>
           <NavLink to="/checkout">
@@ -30,6 +41,16 @@ const Navigation = () => {
           </NavLink>
         </StyledNavItem>
       </StyledNavList>
+      {isMenuOpen && (
+        <StyledMobileMenu>
+          <StyledNavItem>
+            <NavLink to="/">Home</NavLink>
+          </StyledNavItem>
+          <StyledNavItem>
+            <NavLink to="/checkout">Checkout</NavLink>
+          </StyledNavItem>
+        </StyledMobileMenu>
+      )}
     </StyledNavigation>
   );
 };
